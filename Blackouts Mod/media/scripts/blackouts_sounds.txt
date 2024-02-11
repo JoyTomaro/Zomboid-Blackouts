@@ -1,0 +1,27 @@
+module Base {
+
+    sound PowerStartup {
+        category = World,
+		master = Ambient,
+        is3D = true,
+
+        clip {
+            file = media/sound/electrichumming.ogg,
+            distanceMax = 100,
+            volume = 0.8,
+        }
+    }
+
+    sound PowerShutoff {
+        category = World,
+		master = Ambient,
+        is3D = true,
+
+        clip {
+            file = media/sound/electricflicker.ogg,
+            distanceMax = 100,
+            volume = 0.8,
+        }
+    }
+
+}

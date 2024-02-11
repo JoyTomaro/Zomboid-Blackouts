@@ -1,0 +1,53 @@
+VERSION = 1,
+
+option Blackouts.Chance {
+	type = integer,
+	min = 0,
+	max = 100,
+	default = 10,
+	page = Blackouts,
+	translation = Blackouts_Chance,
+}
+
+option Blackouts.RampUp {
+	type = boolean,
+	default = false,
+	page = Blackouts,
+	translation = Blackouts_RampUp,
+}
+
+option Blackouts.Recovery {
+	type = integer,
+	min = 0,
+	max = 100,
+	default = 25,
+	page = Blackouts,
+	translation = Blackouts_Recovery,
+}
+
+option Blackouts.InitialCooldown {
+	type = integer,
+	min = 1,
+	max = 744,
+	default = 24,
+	page = Blackouts,
+	translation = Blackouts_InitialCooldown,
+}
+
+option Blackouts.Cooldown {
+	type = integer,
+	min = 1,
+	max = 744,
+	default = 24,
+	page = Blackouts,
+	translation = Blackouts_Cooldown,
+}
+
+option Blackouts.Override {
+	type = integer,
+	min = 0,
+	max = 365,
+	default = 0,
+	page = Blackouts,
+	translation = Blackouts_Override,
+}

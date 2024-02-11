@@ -1,0 +1,4 @@
+UI_EN = {
+    UI_trait_HandTorch = "Hand Torch",
+    UI_trait_HandTorchdesc = "Start with a hand torch",
+}
