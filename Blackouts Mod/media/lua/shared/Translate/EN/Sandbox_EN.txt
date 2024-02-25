@@ -2,20 +2,26 @@ Sandbox_EN = {
 	Sandbox_Blackouts = "Blackouts Mod",
 
 	Sandbox_Blackouts_Chance = "Blackout Event %Chance",
-	Sandbox_Blackouts_Chance_tooltip = "Chance of a blackout occurring, every hour",
-
-	Sandbox_Blackouts_RampUp = "Blackout Chance Ramps Up",
-	Sandbox_Blackouts_RampUp_tooltip = "Blackout chance will double when you are close to the shutoff date",
+	Sandbox_Blackouts_Chance_tooltip = "Chance of a blackout occurring, every hour.",
 
 	Sandbox_Blackouts_Recovery = "Blackout Event Recovery %Chance",
-	Sandbox_Blackouts_Recovery_tooltip = "Chance to recover from a blackout after the first 30 minutes, every ten minutes",
+	Sandbox_Blackouts_Recovery_tooltip = "Chance to recover from a blackout after the minimum duration, every ten minutes.",
 
-	Sandbox_Blackouts_InitialCooldown = "Initial Blackout Cooldown",
-	Sandbox_Blackouts_InitialCooldown_tooltip = "Minimum hours before the first blackout",
+	Sandbox_Blackouts_WeatherEvent = "Storms Increase Blackout Chance",
+	Sandbox_Blackouts_WeatherEvent_tooltip = "Blackout chance will add an additional roll when there is a heavy storm.",
+
+	Sandbox_Blackouts_RampUp = "Blackout Chance Ramps Up",
+	Sandbox_Blackouts_RampUp_tooltip = "Blackout chance will add an additional roll when you are close to the shutoff date.",
+
+	Sandbox_Blackouts_InitialCooldown = "Time Before Initial Blackout",
+	Sandbox_Blackouts_InitialCooldown_tooltip = "Minimum hours before the first blackout.",
+
+	Sandbox_Blackouts_Duration = "Minimum Blackout Duration",
+	Sandbox_Blackouts_Duration_tooltip = "Minimum hours for a blackout to last.",
 
 	Sandbox_Blackouts_Cooldown = "Blackout Cooldown",
-	Sandbox_Blackouts_Cooldown_tooltip = "Minimum hours between blackouts",
+	Sandbox_Blackouts_Cooldown_tooltip = "Minimum hours between blackouts.",
 
-	Sandbox_Blackouts_Override = "Permanent Blackout Override (*OPTIONAL*)",
+	Sandbox_Blackouts_Override = "Permanent Power Shutoff Override (*OPTIONAL*)",
 	Sandbox_Blackouts_Override_tooltip = "Use this if you want to change the shutoff date manually.<br>Ignores if left at 0.",
 }

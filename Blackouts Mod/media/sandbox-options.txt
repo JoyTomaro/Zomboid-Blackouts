@@ -9,13 +9,6 @@ option Blackouts.Chance {
 	translation = Blackouts_Chance,
 }
 
-option Blackouts.RampUp {
-	type = boolean,
-	default = false,
-	page = Blackouts,
-	translation = Blackouts_RampUp,
-}
-
 option Blackouts.Recovery {
 	type = integer,
 	min = 0,
@@ -25,13 +18,36 @@ option Blackouts.Recovery {
 	translation = Blackouts_Recovery,
 }
 
+option Blackouts.WeatherEvent {
+	type = boolean,
+	default = true,
+	page = Blackouts,
+	translation = Blackouts_WeatherEvent,
+}
+
+option Blackouts.RampUp {
+	type = boolean,
+	default = false,
+	page = Blackouts,
+	translation = Blackouts_RampUp,
+}
+
 option Blackouts.InitialCooldown {
 	type = integer,
 	min = 1,
 	max = 744,
-	default = 24,
+	default = 168,
 	page = Blackouts,
 	translation = Blackouts_InitialCooldown,
+}
+
+option Blackouts.Duration {
+	type = integer,
+	min = 1,
+	max = 744,
+	default = 1,
+	page = Blackouts,
+	translation = Blackouts_Duration,
 }
 
 option Blackouts.Cooldown {

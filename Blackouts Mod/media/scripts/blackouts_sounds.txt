@@ -1,7 +1,7 @@
 module Base {
 
     sound PowerStartup {
-        category = World,
+        category = Blackouts,
 		master = Ambient,
         is3D = true,
 
@@ -13,7 +13,7 @@ module Base {
     }
 
     sound PowerShutoff {
-        category = World,
+        category = Blackouts,
 		master = Ambient,
         is3D = true,
 
