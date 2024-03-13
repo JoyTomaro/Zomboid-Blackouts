@@ -4,13 +4,20 @@
 require "lua_timers" --?? lua timers by vishnya. requires this API so sound effects are timed properly
 local BlackoutsEventHandler = {}
 
-BlackoutsEventHandler.getNearestBuilding = function()
+--** overrides power shutoff date
+BlackoutsEventHandler.overrideShutoffDate = function()
+    if SandboxVars.Blackouts.Override > 0 then
+        SandboxVars.ElecShutModifier = SandboxVars.Blackouts.Override
+    end
+end
+
+BlackoutsEventHandler.getNearestBuildingSquare = function()
     local player = getPlayer()
     local vector = Vector2f.new()
-    local closest = AmbientStreamManager.getInstance():getNearestBuilding(player:getX(),player:getY(),vector)
-    local closestSq = getSquare(closest:getX(), closest:getY(), player:getZ())
+    local closestBuilding = AmbientStreamManager.getInstance():getNearestBuilding(player:getX(), player:getY(), vector)
+    local closestSquare = closestBuilding and getSquare(closestBuilding:getX(), closestBuilding:getY(), player:getZ())
 
-    return closestSq
+    return closestSquare
 end
 
 BlackoutsEventHandler.shutoffPower = function()
@@ -21,8 +28,10 @@ BlackoutsEventHandler.shutoffPower = function()
         if not playerSquare:isOutside() then
             player:playSoundLocal("PowerShutoff")
         elseif playerSquare:isOutside() then
-            local square = BlackoutsEventHandler.getNearestBuilding()
-            getSoundManager():PlayWorldSound("PowerShutoff", square, 1, 0, 0, true)
+            local buildingSquare = BlackoutsEventHandler.getNearestBuildingSquare()
+            if buildingSquare then 
+                getSoundManager():PlayWorldSound("PowerShutoff", buildingSquare, 1, 0, 0, true) 
+            end
         end
     end
 
@@ -40,8 +49,10 @@ BlackoutsEventHandler.restorePower = function()
         if not playerSquare:isOutside() then
             player:playSoundLocal("PowerStartup")
         elseif playerSquare:isOutside() then
-            local square = BlackoutsEventHandler.getNearestBuilding()
-            getSoundManager():PlayWorldSound("PowerStartup", square, 1, 0, 0, true)
+            local buildingSquare = BlackoutsEventHandler.getNearestBuildingSquare()
+            if buildingSquare then 
+                getSoundManager():PlayWorldSound("PowerStartup", buildingSquare, 1, 0, 0, true) 
+            end
         end
     end
     
@@ -81,9 +92,17 @@ BlackoutsEventHandler.forceRestore = function()
     sendClientCommand("TomaroBlackouts", "restorePower", {force = true})
 end
 
-Events.OnCreatePlayer.Add(BlackoutsEventHandler.requestPowerState)
 LuaEventManager.AddEvent("BlackoutsForceShutoff")
 LuaEventManager.AddEvent("BlackoutsForceRestore")
+
 Events.BlackoutsForceShutoff.Add(BlackoutsEventHandler.forceShutoff)
 Events.BlackoutsForceRestore.Add(BlackoutsEventHandler.forceRestore)
+
+Events.OnCreatePlayer.Add(BlackoutsEventHandler.requestPowerState)
+
+Events.OnLoad.Add(BlackoutsEventHandler.overrideShutoffDate)
+if isServer() then Events.OnServerStarted.Add(BlackoutsEventHandler.overrideShutoffDate) end
+Events.OnSave.Add(BlackoutsEventHandler.overrideShutoffDate)
+if isServer() then Events.OnServerStartSaving.Add(BlackoutsEventHandler.overrideShutoffDate) end
+
 return BlackoutsEventHandler

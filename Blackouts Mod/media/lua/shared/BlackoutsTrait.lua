@@ -18,4 +18,5 @@ end
 --------------------------------------
 Events.OnGameBoot.Add(BlackoutsPlayer.flashlightTrait)
 Events.OnNewGame.Add(BlackoutsPlayer.flashlightStuff)
+
 return BlackoutsPlayer
